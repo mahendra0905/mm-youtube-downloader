@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MM YouTube Downloader</title>
+<style>
+  :root{ --bg:#0b0d10; --card:#14181d; --ac:#8b5cf6; --ac2:#06b6d4; --tx:#e8eaed; --mut:#9aa4b2; --ok:#22c55e; --bd:#232a32; }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  body{ font-family:'Segoe UI',system-ui,sans-serif; background:radial-gradient(1200px 600px at 50% -10%, #1a1030 0%, var(--bg) 55%); color:var(--tx); min-height:100vh; display:flex; flex-direction:column; align-items:center; padding:40px 20px; }
+  .badge{ font-size:13px; color:var(--ac2); letter-spacing:2px; text-transform:uppercase; margin-bottom:14px; }
+  h1{ font-size:clamp(32px,6vw,54px); font-weight:800; background:linear-gradient(90deg,var(--ac),var(--ac2)); -webkit-background-clip:text; background-clip:text; color:transparent; text-align:center; line-height:1.1; }
+  .sub{ color:var(--mut); margin-top:14px; text-align:center; max-width:560px; font-size:17px; line-height:1.5; }
+  .card{ background:var(--card); border:1px solid var(--bd); border-radius:18px; padding:28px; margin-top:34px; width:100%; max-width:640px; box-shadow:0 20px 60px rgba(0,0,0,.4); }
+  .step{ display:flex; gap:14px; align-items:flex-start; padding:14px 0; border-bottom:1px solid var(--bd); }
+  .step:last-child{ border-bottom:none; }
+  .num{ flex:none; width:30px; height:30px; border-radius:50%; background:linear-gradient(135deg,var(--ac),var(--ac2)); display:flex; align-items:center; justify-content:center; font-weight:700; font-size:15px; }
+  .step .t{ font-size:16px; } .step .t b{ color:#fff; } .step .t span{ color:var(--mut); }
+  code{ background:#0a0c0f; border:1px solid var(--bd); padding:3px 8px; border-radius:7px; color:var(--ac2); font-family:'Cascadia Code',Consolas,monospace; font-size:14px; }
+  .dlbtn{ display:block; text-align:center; margin:30px auto 10px; background:linear-gradient(135deg,var(--ac),var(--ac2)); color:#fff; font-size:19px; font-weight:700; padding:17px 40px; border-radius:14px; text-decoration:none; max-width:360px; transition:transform .15s, box-shadow .15s; box-shadow:0 10px 30px rgba(139,92,246,.35); }
+  .dlbtn:hover{ transform:translateY(-2px); box-shadow:0 14px 40px rgba(139,92,246,.5); }
+  .or{ text-align:center; color:var(--mut); margin:22px 0 10px; font-size:14px; }
+  .cmdbox{ background:#0a0c0f; border:1px solid var(--bd); border-radius:12px; padding:16px 18px; display:flex; align-items:center; justify-content:space-between; gap:12px; }
+  .cmdbox code{ background:none; border:none; padding:0; color:var(--tx); font-size:13px; word-break:break-all; }
+  .copy{ flex:none; background:var(--ac); border:none; color:#fff; padding:8px 14px; border-radius:8px; cursor:pointer; font-size:13px; font-weight:600; }
+  .copy:active{ transform:scale(.95); }
+  .use{ margin-top:26px; }
+  .use h3{ font-size:15px; color:var(--mut); text-transform:uppercase; letter-spacing:1px; margin-bottom:12px; }
+  .use .row{ display:flex; gap:10px; align-items:center; margin:8px 0; flex-wrap:wrap; }
+  .pill{ flex:none; font-size:12px; font-weight:700; padding:4px 10px; border-radius:20px; }
+  .pill.v{ background:rgba(139,92,246,.2); color:#c4b5fd; } .pill.a{ background:rgba(6,182,212,.2); color:#67e8f9; }
+  footer{ color:var(--mut); font-size:13px; margin-top:40px; text-align:center; }
+  .note{ color:var(--mut); font-size:13px; margin-top:16px; line-height:1.5; text-align:center; }
+</style>
+</head>
+<body>
+  <div class="badge">● free · windows · no setup</div>
+  <h1>MM YouTube Downloader</h1>
+  <p class="sub">Download any YouTube video or MP3 with one short command. Share it, install it, done — no Python, no fuss.</p>
+
+  <a class="dlbtn" href="MM-Setup.bat" download>⬇ Download Setup</a>
+  <p class="note">Double-click the downloaded file. It fetches everything, then asks <b>Y/N</b> to install.</p>
+
+  <p class="or">— or, paste this in PowerShell —</p>
+  <div class="cmdbox">
+    <code id="oneliner">irm https://mahendra0905.github.io/mm-youtube-downloader/go | iex</code>
+    <button class="copy" onclick="navigator.clipboard.writeText(document.getElementById('oneliner').innerText);this.innerText='Copied!';setTimeout(()=>this.innerText='Copy',1500)">Copy</button>
+  </div>
+
+  <div class="card">
+    <div class="step"><div class="num">1</div><div class="t"><b>Download &amp; run</b> <span>— double-click <code>MM-Setup.bat</code>. If Windows warns, click <b>More info → Run anyway</b>.</span></div></div>
+    <div class="step"><div class="num">2</div><div class="t"><b>Wait for download</b> <span>— it grabs the engine (and ffmpeg/node only if your PC lacks them).</span></div></div>
+    <div class="step"><div class="num">3</div><div class="t"><b>Press Y to install</b> <span>— when it asks, type <code>Y</code> and Enter. It adds itself to PATH.</span></div></div>
+    <div class="step"><div class="num">4</div><div class="t"><b>Open a NEW terminal</b> <span>— then just type the command below.</span></div></div>
+
+    <div class="use">
+      <h3>How to use</h3>
+      <div class="row"><span class="pill v">VIDEO</span><code>mm "https://www.youtube.com/watch?v=XXXX"</code></div>
+      <div class="row"><span class="pill a">MP3</span><code>mk "https://www.youtube.com/watch?v=XXXX"</code></div>
+    </div>
+    <p class="note" style="text-align:left;margin-top:18px">Files save to your <b>Downloads</b> folder. Some private/age-restricted videos need you signed in to YouTube in Firefox/Chrome/Edge — the tool borrows that login automatically.</p>
+  </div>
+
+  <footer>Made by Mahendra · powered by yt-dlp + ffmpeg (open source)</footer>
+</body>
+</html>
