@@ -15,7 +15,7 @@ function Grab($url,$out){ $ProgressPreference='SilentlyContinue'; Invoke-WebRequ
 Clear-Host
 Say Cyan    "  .---------------------------------------------."
 Say Magenta "       M M   Y O U T U B E   D O W N L O A D E R"
-Say DarkGray"               web setup  -  by Mahendra"
+Say DarkGray "               web setup  -  by Mahendra"
 Say Cyan    "  '---------------------------------------------'"
 Write-Host ""
 Say Yellow  "  [1/4] YouTube engine (yt-dlp) ..."
